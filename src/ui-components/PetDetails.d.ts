@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Pet } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { BadgeProps, DividerProps, FlexProps, ImageProps, TextProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
@@ -27,6 +28,8 @@ export declare type PetDetailsOverridesProps = {
     "Color:"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type PetDetailsProps = React.PropsWithChildren<Partial<FlexProps> & {
+    pet?: Pet;
+} & {
     overrides?: PetDetailsOverridesProps | undefined | null;
 }>;
 export default function PetDetails(props: PetDetailsProps): React.ReactElement;

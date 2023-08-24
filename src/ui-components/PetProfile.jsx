@@ -6,10 +6,18 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Pet } from "../models";
+import {
+  getOverrideProps,
+  useDataStoreDeleteAction,
+} from "@aws-amplify/ui-react/internal";
+import { schema } from "../models/schema";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function PetProfile(props) {
   const { pet, overrides, ...rest } = props;
+  const buttonThreeEightFourNineFiveZeroEightOnClick = useDataStoreDeleteAction(
+    { id: pet?.id, model: Pet, schema: schema }
+  );
   return (
     <Flex
       gap="24px"
@@ -34,6 +42,9 @@ export default function PetProfile(props) {
         isDisabled={false}
         variation="link"
         children="Delete"
+        onClick={() => {
+          buttonThreeEightFourNineFiveZeroEightOnClick();
+        }}
         {...getOverrideProps(overrides, "Button3849508")}
       ></Button>
       <Image

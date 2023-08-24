@@ -10,7 +10,7 @@ import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Badge, Divider, Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function PetDetails(props) {
-  const { overrides, ...rest } = props;
+  const { pet, overrides, ...rest } = props;
   return (
     <Flex
       gap="0"
@@ -35,6 +35,7 @@ export default function PetDetails(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         objectFit="cover"
+        src={pet?.image}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
@@ -113,7 +114,7 @@ export default function PetDetails(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Kitty Cat"
+            children={pet?.name}
             {...getOverrideProps(overrides, "Kitty Cat")}
           ></Text>
         </Flex>
@@ -158,7 +159,7 @@ export default function PetDetails(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="About: "
+            children={`${"About: "}${pet?.about}`}
             {...getOverrideProps(overrides, "About:")}
           ></Text>
           <Text
@@ -181,7 +182,7 @@ export default function PetDetails(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Age: "
+            children={`${"Age: "}${pet?.age}`}
             {...getOverrideProps(overrides, "Age:")}
           ></Text>
         </Flex>
@@ -203,7 +204,7 @@ export default function PetDetails(props) {
             shrink="0"
             size="small"
             variation="default"
-            children="Breed:  Lab"
+            children={`${"Breed: "}${pet?.breed}`}
             {...getOverrideProps(overrides, "Badge")}
           ></Badge>
         </Flex>
@@ -238,7 +239,7 @@ export default function PetDetails(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Color:"
+            children={`${"Color: "}${pet?.color}`}
             {...getOverrideProps(overrides, "Color:")}
           ></Text>
         </Flex>
